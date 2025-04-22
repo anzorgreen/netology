@@ -118,7 +118,7 @@ def get_area():
         if(
              side_a + side_b > side_c and
              side_a + side_c > side_b and
-             side_b + side_c > side_a:
+             side_b + side_c > side_a
         ):
             p = (side_a + side_b + side_c) / 2
             result = sqrt(p * (p - side_a) * (p - side_b) * (p - side_c))
