@@ -19,20 +19,22 @@ def sum_numbers_from_input():
     counter = 0
     while True:
         number = int(input('Введите ваше число: '))
-        counter += number
-        if number == 0:
+        if number != 0:
+            counter += number
+        else:
             print(f'Сумма всех введённых вами чисел равна: {counter}')
+            break
 
 # Task 3
 
 
-def mvp_dating_app(set_1, set_2):
-    if len(set_1) != len(set_2):
+def mvp_dating_app(list_1, list_2):
+    if len(list_1) != len(list_2):
         print('Внимание, кто-то может остаться без пары!')
     else:
         print('Идеальные пары:')
-        for i in range(len(set_1)):
-            print(f'{set_1[i]} и {set_2[i]}')
+        for i in range(len(list_1)):
+            print(f'{list_1[i]} и {list_2[i]}')
 
 
 # Task 4
@@ -41,8 +43,8 @@ def get_average_temperature_in_countries(countries):
     for country in countries:
         country_name = country[0]
         average_temperature_in_F = 0
-        for temperatue in country[1]:
-            average_temperature_in_F += temperatue
+        for temperature in country[1]:
+            average_temperature_in_F += temperature
         average_temperature_in_F /= len(country[1])
         average_temperature_in_C = (average_temperature_in_F - 32) / 1.8
         print(f'{country_name} - {average_temperature_in_C:.1f} C')
@@ -60,16 +62,19 @@ def check_car_ids(car_ids):
             print(f'Номер {car_id} не валиден')
 
 
-# Task 5
+# Task 6
 
 def get_average_views(stream):
     uniqe_users = set()
     views = 0
-    pattern = r'(user\d{0,})\,(\d{4}-\d{2}-\d{2});(\d{1,})'
+    pattern = r'(user\d{0,})\,\d{4}-\d{2}-\d{2};(\d+)'
     for item in stream:
         found = re.search(pattern, item)
+        if not found:
+            print(f'Строка "{item}" не соответствует шаблону')
+            continue
         uniqe_users.add(found.group(1))
-        views += int(found.group(3))
+        views += int(found.group(2))
     average_vies = views / len(uniqe_users)
     print(
         'Среднее количество просмотров'
