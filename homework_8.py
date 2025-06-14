@@ -83,7 +83,7 @@ class Developer(Employee):
 # Сори, я вообще не вкуриваю, что от меня хотят...
 # Но надеюсь, хотя бы в правильном направлении...
 
-class Deigner(Employee):
+class Designer(Employee):
     def __init__(self, name, seniority=2):
         super().__init__(name, seniority)
         self.grade = 1
