@@ -84,8 +84,8 @@ class Developer(Employee):
 # Но надеюсь, хотя бы в правильном направлении...
 
 class Designer(Employee):
-    def __init__(self, name, seniority=2):
-        super().__init__(name, seniority)
+    def __init__(self, name, seniority):
+        super().__init__(name, seniority + 2)
         self.grade = 1
 
     def receiving_international_reward(self):
@@ -94,7 +94,7 @@ class Designer(Employee):
 
     def check_if_it_is_time_for_upgrade(self):
         self.seniority += 1
-        if self.seniority % 5 == 0:
+        if self.seniority % 7 == 0:
             self.grade_up()
         return self.publish_grade()
 
