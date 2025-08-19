@@ -89,11 +89,10 @@ median_resp_rate = df['respiratory rate'].median()
 
 
 # Значения нечисловых стобцов заполним модой, кроме outcome, 
-
+# это столбец несёт слишком важное значение, чтобы угадывать его значения. 
 mode_surgery = df['surgery?'].mode()[0]
 mode_pain = df['pain'].mode()[0]
 mode_temperature_of_extremities = df['temperature of extremities'].mode()[0]
-mode_outcome = df['outcome'].mode()[0]
 
 
 fill_values = {
@@ -102,12 +101,14 @@ fill_values = {
     'respiratory rate': median_resp_rate,
     'surgery?': mode_surgery,
     'temperature of extremities': mode_temperature_of_extremities,
-    'outcome': mode_outcome,
     'pain': mode_pain
 }
 
 df.fillna(fill_values, inplace=True)
 
+# Тут можно удалить и пустые значения outcome
+
+df.dropna(subset=['outcome'], inplace=True)
 
 
 
